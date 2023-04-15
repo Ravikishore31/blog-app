@@ -7,6 +7,8 @@ import multer from "multer";
 
 const app = express();
 
+const port = process.env.PORT || 8800;
+
 app.use(express.json());
 app.use(cookieParser());
 const storage = multer.diskStorage({
@@ -29,6 +31,6 @@ app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/posts", postRoutes);
 
-app.listen(8800, () => {
+app.listen(port, () => {
   console.log("Connected!");
 });

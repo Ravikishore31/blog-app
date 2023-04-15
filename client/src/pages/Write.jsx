@@ -35,14 +35,14 @@ const Write = () => {
             title,
             desc: value,
             cat,
-            img: imgUrl ? imgUrl : "", // Check if imgUrl is not null
+            img: file ? imgUrl : "",
           })
         : await axios.post(`/posts/`, {
             title,
             desc: value,
             cat,
-            img: imgUrl ? imgUrl : "",
-            date: moment().format("YYYY-MM-DD HH:mm:ss"),
+            img: file ? imgUrl : "",
+            date: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"),
           });
       navigate("/");
     } catch (err) {
