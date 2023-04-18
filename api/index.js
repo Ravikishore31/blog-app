@@ -7,7 +7,7 @@ import multer from "multer";
 
 const app = express();
 
-const port = process.env.PORT || 8800;
+const port = process.env.PORT || 3306;
 
 app.use(express.json());
 app.use(cookieParser());

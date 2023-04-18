@@ -12,9 +12,7 @@ const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(
-          `https://leafy-crostata-e5a46f.netlify.app//posts${cat}`
-        );
+        const res = await axios.get(`/posts${cat}`);
         setPosts(res.data);
       } catch (err) {
         console.log(err);
