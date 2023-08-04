@@ -1,7 +1,6 @@
 # Stage 1: Build the React Frontend
-FROM node:14 AS client-build
+FROM node:latest AS client-build
 
-# Set the working directory for the frontend build stage inside the container
 WORKDIR /app/client
 
 # Copy the frontend package.json and package-lock.json to the container
@@ -17,9 +16,8 @@ COPY client ./
 RUN npm run build
 
 # Stage 2: Build the Node.js Backend
-FROM node:14 AS server-build
+FROM node:latest AS server-build
 
-# Set the working directory for the backend build stage inside the container
 WORKDIR /app
 
 # Copy the backend package.json and package-lock.json to the container
@@ -32,9 +30,8 @@ RUN npm install
 COPY api ./
 
 # Stage 3: Create the Production Node.js Server
-FROM node:14
+FROM node:latest
 
-# Set the working directory for the final production stage inside the container
 WORKDIR /app
 
 # Copy the built frontend from the client-build stage to the /app/public directory
