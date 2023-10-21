@@ -7,8 +7,6 @@ import multer from "multer";
 
 const app = express();
 
-const port = process.env.PORT || 3306;
-
 app.use(express.json());
 app.use(cookieParser());
 const storage = multer.diskStorage({
@@ -24,13 +22,13 @@ const upload = multer({ storage });
 
 app.post("/api/upload", upload.single("file"), function (req, res) {
   const file = req.file;
-  res.status(200).json(file);
+  res.status(200).json(file.filename);
 });
 
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/posts", postRoutes);
 
-app.listen(port, () => {
+app.listen(8800, () => {
   console.log("Connected!");
 });
